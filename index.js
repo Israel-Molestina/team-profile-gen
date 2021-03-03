@@ -5,6 +5,12 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+let teamManager = [];
+
+let teamEngineer = [];
+
+let teamIntern = [];
+
 // array of questions for user input
 const ManagerQuestions = [
     {
@@ -39,6 +45,9 @@ const ManagerQuestions = [
             return officeNum !== '';
         },
     },
+];
+
+const newMemberQuestions= [
     {
         type: 'confirm',
         message: "Would you like to add another team member?",
@@ -51,7 +60,7 @@ const ManagerQuestions = [
         name: 'role',
         when: (answers) => answers.newMember === true,
     },
-];
+]
 
 const engineerQuestions = [
     {
@@ -127,33 +136,44 @@ const internQuestions = [
 function addManager() {
     inquirer.prompt([...ManagerQuestions])
     .then ((managerAnswers) => {
-        new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNumber)
-    })
-    .then ((managerAnswers) => {
-        if (managerAnswers.newMember === true) {
-            addTeamMember(managerAnswers);
-        }
+        teamManager.push(new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNum));
+        newMem();
     })
     .catch((err) => {
         console.log(err);
     })
 };
 
-// creates a new constructer class based on user imput
-function addTeamMember(managerAnswers) {
-    switch(managerAnswers.role) {
-        case 'Engineer':
-            addEngineer();
+// function for asking if user wants to add new member
+function newMem() {
+    inquirer.prompt([...newMemberQuestions])
+    .then ((newMemAnswers) => {
+        if (newMemAnswers.newMember) {
+            switch(newMemAnswers.role) {
+                case 'Engineer':
+                    addEngineer();
+                    break;
+        
+                case 'Intern':
+                    addIntern();
+                    break;
+            };
+        }
+        else {
+            console.log(teamManager);
+            console.log(teamEngineer);
+            console.log(teamIntern);
+            build();
+        }
+    }) 
+}
 
-        case 'Intern':
-            addIntern();
-    }
-};
 // creates a new constructor Engineer class
 function addEngineer() {
     inquirer.prompt([...engineerQuestions])
     .then ((engineerQuestions) => {
-        new Engineer(engineerQuestions.name, engineerQuestions.id, engineerQuestions.email, engineerQuestions.github)
+        teamEngineer.push(new Engineer(engineerQuestions.name, engineerQuestions.id, engineerQuestions.email, engineerQuestions.gitHub))
+        newMem();
     })
     .catch((err) => {
         console.log(err);
@@ -164,12 +184,23 @@ function addEngineer() {
 function addIntern() {
     inquirer.prompt([...internQuestions])
     .then ((internQuestions) => {
-        new Engineer(internQuestions.name, internQuestions.id, internQuestions.email, internQuestions.school)
+        teamIntern.push(new Intern(internQuestions.name, internQuestions.id, internQuestions.email, internQuestions.school))
+        newMem();
     })
     .catch((err) => {
         console.log(err);
     })
+};
+
+// initial call to start app
+addManager();
+
+
+// function to write myTeam html file 
+function build() {
+    fs.writeFileSync('myTeam.html', generateTeam(teamManager, teamEngineer, teamIntern));
+        console.log("README file succesfully created!");
 }
 
-addManager();
+
 
