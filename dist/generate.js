@@ -5,63 +5,77 @@ const Intern = require('../lib/Intern');
 
 // function to loop through engineers and create cards for each
 function loopEngineer(teamEngineer) {
-    let engineersHtml = teamEngineer.map(engineer => {
-        `<section class="col">
-            <div class="card shadow rounded">
 
-                <div class="card-header">
-                    Name <br>
-                    Engineer
-                </div>
+    //empty array to hold generated Engineer cards
+    let engineerCards = [];
 
-                <div class="card-body">
+    for (i = 0; i < teamEngineer.length; i++) {
+        let engineerSect =  `
+                    <section class="col">
+                        <div class="card shadow rounded">
+                
+                            <div class="card-header">
+                                ${teamEngineer[i].getName()} <br>
+                                ${teamEngineer[i].getRole()}
+                            </div>
+                
+                            <div class="card-body">
+                
+                                <ul class="list-group list-group-flush border">
+                                    <li class="list-group-item">ID: ${teamEngineer[i].getId()}</li>
+                                    <li class="list-group-item">Email: ${teamEngineer[i].getEmail()}</li>
+                                    <li class="list-group-item">${teamEngineer[i].getGithub()}</li>
+                                </ul>
+                
+                            </div>
+                
+                        </div>
+                    </section>`
 
-                    <ul class="list-group list-group-flush border">
-                        <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email:</li>
-                        <li class="list-group-item">GitHub</li>
-                    </ul>
+        engineerCards.push(engineerSect);
+    }
 
-                </div>
+    return engineerCards;
 
-            </div>
-        </section>`
-    })
-    return engineersHtml;
 };
 
 // function to loop through interns and create cards for each
 function loopIntern(teamIntern) {
-    let internsHtml = teamIntern.map(intern => {
-        `<section class="col">
-            <div class="card shadow rounded">
 
-                <div class="card-header">
-                    Name <br>
-                    Intern
-                </div>
+    //empty array to hold generated intern cards
+    let internCards = []
 
-                <div class="card-body">
+    for (i = 0; i < teamIntern.length; i++){
+        let internSect = `
+                    <section class="col">
+                        <div class="card shadow rounded">
 
-                    <ul class="list-group list-group-flush border">
-                        <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email:</li>
-                        <li class="list-group-item">School:</li>
-                    </ul>
+                            <div class="card-header">
+                                ${teamIntern[i].getName()} <br>
+                                ${teamIntern[i].getRole()}
+                            </div>
 
-                </div>
+                            <div class="card-body">
 
-            </div>
+                                <ul class="list-group list-group-flush border">
+                                    <li class="list-group-item">ID: ${teamIntern[i].getId()}</li>
+                                    <li class="list-group-item">Email: ${teamIntern[i].getEmail()}</li>
+                                    <li class="list-group-item">${teamIntern[i].getSchool()}</li>
+                                </ul>
 
-        </section> `
-    })
-    return internsHtml;
+                            </div>
+
+                        </div>
+                    </section>`
+        internCards.push(internSect);
+    }
+    return internCards;
 };
 
 // function to generate team html page
 function generateTeam(teamManager, teamEngineer, teamIntern) {
-    console.log(teamManager);
-    console.log(teamManager[0].getRole())
+    console.log(teamEngineer);
+
 
     return `
     <html lang="en">
@@ -111,51 +125,13 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
                 </div>
                 
 
-                <section class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+                <section class="row row-cols-1 row-cols-md-3 g-4 mt-2"> 
+                
                     
-
-                    <section class="col">
-                        <div class="card shadow rounded">
-
-                            <div class="card-header">
-                                Name <br>
-                                Engineer
-                            </div>
-
-                            <div class="card-body">
-
-                                <ul class="list-group list-group-flush border">
-                                    <li class="list-group-item">ID:</li>
-                                    <li class="list-group-item">Email:</li>
-                                    <li class="list-group-item">GitHub</li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-                    </section> 
-
-                    <section class="col">
-                        <div class="card shadow rounded">
-
-                            <div class="card-header">
-                                Name <br>
-                                Intern
-                            </div>
-
-                            <div class="card-body">
-
-                                <ul class="list-group list-group-flush border">
-                                    <li class="list-group-item">ID:</li>
-                                    <li class="list-group-item">Email:</li>
-                                    <li class="list-group-item">School:</li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                    </section> 
+                    ${loopEngineer(teamEngineer)}
+                    
+                    ${loopIntern(teamIntern)}
+                     
 
                 </section>
             
