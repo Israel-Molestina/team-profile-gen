@@ -1,7 +1,8 @@
-const Employee = require('../lib/Employee');
-const Manager = require('../lib/Manager');
+const Employee = require('../lib/employee');
+const Manager = require('../lib/manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
+
 // function to loop through engineers and create cards for each
 function loopEngineer(teamEngineer) {
     let engineersHtml = teamEngineer.map(engineer => {
@@ -51,7 +52,7 @@ function loopIntern(teamIntern) {
 // function to generate team html page
 function generateTeam(teamManager, teamEngineer, teamIntern) {
     console.log(teamManager);
-    console.log(teamManager.getName())
+    console.log(teamManager[0].getRole())
 
     return `
     <html lang="en">
@@ -61,7 +62,7 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./dist/style.css">
 
     </head>
 
@@ -75,62 +76,76 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
 
             <section class="col-md-10 justify-content-center text-center">
 
-                <section class="row">
 
-                    <div class="card">
+                <div class="card shadow rounded">
 
-                        <div class="card-header">
-                          Manager
-                        </div>
+                    <div class="card-header">
 
-                        <div class="card-body">
-
-                          <h5 class="card-title">${teamManager.name}</h5>
-                          <p class="card-text">${teamManager.eamil}</p>
-
-                        </div>
+                        Name 
+                        <br>
+                        Manager
 
                     </div>
 
-                </section>
+                    <div class="card-body">
 
-                <section class="row">
+                        <ul class="list-group list-group-flush border">
+
+                            <li class="list-group-item">ID:</li>
+                            <li class="list-group-item">Email:</li>
+                            <li class="list-group-item">Office Number:</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                
+
+                <section class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                     
 
-                    <section class="col-md-4">
-                        <div class="card">
+                    <section class="col">
+                        <div class="card shadow rounded">
 
                             <div class="card-header">
-                              Intern
+                                Name <br>
+                                Engineer
                             </div>
 
                             <div class="card-body">
 
-                              <h5 class="card-title">Name</h5>
-                              <p class="card-text">ID</p>
+                                <ul class="list-group list-group-flush border">
+                                    <li class="list-group-item">ID:</li>
+                                    <li class="list-group-item">Email:</li>
+                                    <li class="list-group-item">GitHub</li>
+                                </ul>
 
                             </div>
 
                         </div>
-                    
                     </section> 
 
-                    <section class="col-md-4">
-                        <div class="card">
+                    <section class="col">
+                        <div class="card shadow rounded">
 
                             <div class="card-header">
-                              Intern
+                                Name <br>
+                                Intern
                             </div>
 
                             <div class="card-body">
 
-                              <h5 class="card-title">Name</h5>
-                              <p class="card-text">ID</p>
+                                <ul class="list-group list-group-flush border">
+                                    <li class="list-group-item">ID:</li>
+                                    <li class="list-group-item">Email:</li>
+                                    <li class="list-group-item">School:</li>
+                                </ul>
 
                             </div>
 
                         </div>
-                    
+
                     </section> 
 
                 </section>

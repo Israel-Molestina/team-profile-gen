@@ -1,11 +1,13 @@
 //packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Employee = require('./lib/employee')
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const gt = require('./dist/generate');
 
+// arrays to hold new team members
 let teamManager = [];
 
 let teamEngineer = [];
@@ -164,6 +166,9 @@ function newMem() {
             build();
         }
     }) 
+    .catch((err) => {
+        console.log(err);
+    })
 }
 
 // creates a new constructor Engineer class
