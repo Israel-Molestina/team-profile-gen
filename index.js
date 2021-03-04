@@ -4,6 +4,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const gt = require('./dist/generate');
 
 let teamManager = [];
 
@@ -160,9 +161,6 @@ function newMem() {
             };
         }
         else {
-            console.log(teamManager);
-            console.log(teamEngineer);
-            console.log(teamIntern);
             build();
         }
     }) 
@@ -198,9 +196,7 @@ addManager();
 
 // function to write myTeam html file 
 function build() {
-    fs.writeFileSync('myTeam.html', generateTeam(teamManager, teamEngineer, teamIntern));
-        console.log("README file succesfully created!");
-}
-
-
-
+    fs.writeFileSync('myTeam.html', gt(teamManager, teamEngineer, teamIntern), (error) =>
+        error? console.log(error) : console.log("myTeam.html file succesfully created!"));
+        
+};

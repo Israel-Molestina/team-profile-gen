@@ -1,59 +1,4 @@
-const Employee = require('../lib/Employee');
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
-// function to loop through engineers and create cards for each
-function loopEngineer(teamEngineer) {
-    let engineersHtml = teamEngineer.map(engineer => {
-        `<section class="col-md-4">
-            <div class="card">
 
-                <div class="card-header">
-                  ${engineer.name}
-                </div>
-
-                <div class="card-body">
-
-                  <h5 class="card-title">name</h5>
-                  <p class="card-text">ID</p>
-                </div>
-
-            </div>
-
-        </section> `
-    })
-    return engineersHtml;
-};
-
-// function to loop through interns and create cards for each
-function loopIntern(teamIntern) {
-    let internsHtml = teamIntern.map(intern => {
-        `<section class="col-md-4">
-            <div class="card">
-
-                <div class="card-header">
-                  ${intern.name}
-                </div>
-
-                <div class="card-body">
-
-                  <h5 class="card-title">name</h5>
-                  <p class="card-text">ID</p>
-                </div>
-
-            </div>
-
-        </section> `
-    })
-    return internsHtml;
-};
-
-// function to generate team html page
-function generateTeam(teamManager, teamEngineer, teamIntern) {
-    console.log(teamManager);
-    console.log(teamManager.getName())
-
-    return `
     <html lang="en">
     <head>
 
@@ -85,8 +30,8 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
 
                         <div class="card-body">
 
-                          <h5 class="card-title">${teamManager.name}</h5>
-                          <p class="card-text">${teamManager.eamil}</p>
+                          <h5 class="card-title">undefined</h5>
+                          <p class="card-text">undefined</p>
 
                         </div>
 
@@ -146,7 +91,4 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
 
     </body>
     </html>
-    `
-};
-
-module.exports = generateTeam;
+    
