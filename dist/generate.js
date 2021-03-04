@@ -13,29 +13,33 @@ function loopEngineer(teamEngineer) {
         let engineerSect =  `
                     <section class="col">
                         <div class="card shadow rounded">
-                
+
                             <div class="card-header">
                                 ${teamEngineer[i].getName()} <br>
                                 ${teamEngineer[i].getRole()}
                             </div>
-                
+
                             <div class="card-body">
-                
+
                                 <ul class="list-group list-group-flush border">
                                     <li class="list-group-item">ID: ${teamEngineer[i].getId()}</li>
                                     <li class="list-group-item">Email: ${teamEngineer[i].getEmail()}</li>
                                     <li class="list-group-item">${teamEngineer[i].getGithub()}</li>
                                 </ul>
-                
+
                             </div>
-                
+
                         </div>
                     </section>`
+
+                    // console.log(engineerSect)
 
         engineerCards.push(engineerSect);
     }
 
-    return engineerCards;
+    // console.log(engineerCards);
+
+    return engineerCards.join('');
 
 };
 
@@ -46,7 +50,7 @@ function loopIntern(teamIntern) {
     let internCards = []
 
     for (i = 0; i < teamIntern.length; i++){
-        let internSect = `
+        let internSect = ` 
                     <section class="col">
                         <div class="card shadow rounded">
 
@@ -69,13 +73,11 @@ function loopIntern(teamIntern) {
                     </section>`
         internCards.push(internSect);
     }
-    return internCards;
+    return internCards.join('');
 };
 
 // function to generate team html page
 function generateTeam(teamManager, teamEngineer, teamIntern) {
-    console.log(teamEngineer);
-
 
     return `
     <html lang="en">
