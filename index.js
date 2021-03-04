@@ -202,6 +202,6 @@ addManager();
 // function to write myTeam html file 
 function build() {
     fs.writeFileSync('myTeam.html', gt(teamManager, teamEngineer, teamIntern), (error) =>
-        error? console.log(error) : console.log("myTeam.html file succesfully created!"));
+        error ? console.log(error) : console.log("myTeam.html file succesfully created!"));
         
 };

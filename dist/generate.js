@@ -6,22 +6,26 @@ const Intern = require('../lib/Intern');
 // function to loop through engineers and create cards for each
 function loopEngineer(teamEngineer) {
     let engineersHtml = teamEngineer.map(engineer => {
-        `<section class="col-md-4">
-            <div class="card">
+        `<section class="col">
+            <div class="card shadow rounded">
 
                 <div class="card-header">
-                  ${engineer.name}
+                    Name <br>
+                    Engineer
                 </div>
 
                 <div class="card-body">
 
-                  <h5 class="card-title">name</h5>
-                  <p class="card-text">ID</p>
+                    <ul class="list-group list-group-flush border">
+                        <li class="list-group-item">ID:</li>
+                        <li class="list-group-item">Email:</li>
+                        <li class="list-group-item">GitHub</li>
+                    </ul>
+
                 </div>
 
             </div>
-
-        </section> `
+        </section>`
     })
     return engineersHtml;
 };
@@ -29,17 +33,22 @@ function loopEngineer(teamEngineer) {
 // function to loop through interns and create cards for each
 function loopIntern(teamIntern) {
     let internsHtml = teamIntern.map(intern => {
-        `<section class="col-md-4">
-            <div class="card">
+        `<section class="col">
+            <div class="card shadow rounded">
 
                 <div class="card-header">
-                  ${intern.name}
+                    Name <br>
+                    Intern
                 </div>
 
                 <div class="card-body">
 
-                  <h5 class="card-title">name</h5>
-                  <p class="card-text">ID</p>
+                    <ul class="list-group list-group-flush border">
+                        <li class="list-group-item">ID:</li>
+                        <li class="list-group-item">Email:</li>
+                        <li class="list-group-item">School:</li>
+                    </ul>
+
                 </div>
 
             </div>
@@ -74,16 +83,16 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
 
         <main class="row justify-content-center">
 
-            <section class="col-md-10 justify-content-center text-center">
+            <section class="col-md-10 justify-content-center text-center m-3">
 
 
                 <div class="card shadow rounded">
 
                     <div class="card-header">
 
-                        Name 
+                        ${teamManager[0].getName()} 
                         <br>
-                        Manager
+                        ${teamManager[0].getRole()} 
 
                     </div>
 
@@ -91,9 +100,9 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
 
                         <ul class="list-group list-group-flush border">
 
-                            <li class="list-group-item">ID:</li>
-                            <li class="list-group-item">Email:</li>
-                            <li class="list-group-item">Office Number:</li>
+                            <li class="list-group-item">ID: ${teamManager[0].getId()} </li>
+                            <li class="list-group-item">Email: ${teamManager[0].getEmail()} </li>
+                            <li class="list-group-item">Office Number: ${teamManager[0].getOfficeNum()} </li>
 
                         </ul>
 
