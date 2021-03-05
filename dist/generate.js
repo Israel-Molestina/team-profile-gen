@@ -24,7 +24,7 @@ function loopEngineer(teamEngineer) {
                                 <ul class="list-group list-group-flush border">
                                     <li class="list-group-item">ID: ${teamEngineer[i].getId()}</li>
                                     <li class="list-group-item">Email: <a href="mailto:${teamEngineer[i].getEmail()}">${teamEngineer[i].getEmail()}</a></li>
-                                    <li class="list-group-item">${teamEngineer[i].getGithub()}</li>
+                                    <li class="list-group-item"> <a href="https://github.com/${teamEngineer[i].getGithub()}">${teamEngineer[i].getGithub()}</li>
                                 </ul>
 
                             </div>
