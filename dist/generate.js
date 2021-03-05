@@ -23,7 +23,7 @@ function loopEngineer(teamEngineer) {
 
                                 <ul class="list-group list-group-flush border">
                                     <li class="list-group-item">ID: ${teamEngineer[i].getId()}</li>
-                                    <li class="list-group-item">Email: ${teamEngineer[i].getEmail()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${teamEngineer[i].getEmail()}">${teamEngineer[i].getEmail()}</a></li>
                                     <li class="list-group-item">${teamEngineer[i].getGithub()}</li>
                                 </ul>
 
@@ -63,7 +63,7 @@ function loopIntern(teamIntern) {
 
                                 <ul class="list-group list-group-flush border">
                                     <li class="list-group-item">ID: ${teamIntern[i].getId()}</li>
-                                    <li class="list-group-item">Email: ${teamIntern[i].getEmail()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${teamIntern[i].getEmail()}">${teamIntern[i].getEmail()}</a></li>
                                     <li class="list-group-item">${teamIntern[i].getSchool()}</li>
                                 </ul>
 
@@ -117,7 +117,7 @@ function generateTeam(teamManager, teamEngineer, teamIntern) {
                         <ul class="list-group list-group-flush border">
 
                             <li class="list-group-item">ID: ${teamManager[0].getId()} </li>
-                            <li class="list-group-item">Email: ${teamManager[0].getEmail()} </li>
+                            <li class="list-group-item">Email: <a href="mailto:${teamManager[0].getEmail()}">${teamManager[0].getEmail()}</a> </li>
                             <li class="list-group-item">Office Number: ${teamManager[0].getOfficeNum()} </li>
 
                         </ul>
