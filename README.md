@@ -2,6 +2,10 @@
 
 ![GitHub license](https://img.shields.io/badge/License-MIT-green)
 
+## User Story
+
+AS A manager I WANT to generate a webpage that displays my team's basic info SO THAT I have quick access to their emails and GitHub profiles
+
 ## Description
 
 Team Profile Generator is a command-line application that will generate an HTML webpage displaying summaries for a team of employees based on a users input. 
