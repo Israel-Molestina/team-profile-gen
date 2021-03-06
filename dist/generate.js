@@ -6,40 +6,32 @@ const Intern = require('../lib/Intern');
 // function to loop through engineers and create cards for each
 function loopEngineer(teamEngineer) {
 
-    //empty array to hold generated Engineer cards
-    let engineerCards = [];
-
-    for (i = 0; i < teamEngineer.length; i++) {
-        let engineerSect =  `
+    let newCards = teamEngineer.map(engineer => {
+        return              `
                     <section class="col">
                         <div class="card shadow rounded">
 
                             <div class="card-header">
-                                ${teamEngineer[i].getName()} <br>
-                                ${teamEngineer[i].getRole()}
+                                ${engineer.getName()} <br>
+                                ${engineer.getRole()}
                             </div>
 
                             <div class="card-body">
 
                                 <ul class="list-group list-group-flush border">
-                                    <li class="list-group-item">ID: ${teamEngineer[i].getId()}</li>
-                                    <li class="list-group-item">Email: <a href="mailto:${teamEngineer[i].getEmail()}">${teamEngineer[i].getEmail()}</a></li>
-                                    <li class="list-group-item"> <a href="https://github.com/${teamEngineer[i].getGithub()}" target="_blank">${teamEngineer[i].getGithub()}</li>
+                                    <li class="list-group-item">ID: ${engineer.getId()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+                                    <li class="list-group-item"> <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
                                 </ul>
 
                             </div>
 
                         </div>
                     </section>`
+        
+    })
 
-                    // console.log(engineerSect)
-
-        engineerCards.push(engineerSect);
-    }
-
-    // console.log(engineerCards);
-
-    return engineerCards.join('');
+    return newCards.join('');
 
 };
 

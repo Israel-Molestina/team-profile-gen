@@ -137,7 +137,7 @@ const internQuestions = [
 
 // creates a new constructor Manager class
 function addManager() {
-    inquirer.prompt([...ManagerQuestions])
+    inquirer.prompt(ManagerQuestions)
     .then ((managerAnswers) => {
         teamManager.push(new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNum));
         newMem();
@@ -149,7 +149,7 @@ function addManager() {
 
 // function for asking if user wants to add new member
 function newMem() {
-    inquirer.prompt([...newMemberQuestions])
+    inquirer.prompt(newMemberQuestions)
     .then ((newMemAnswers) => {
         if (newMemAnswers.newMember) {
             switch(newMemAnswers.role) {
@@ -173,7 +173,7 @@ function newMem() {
 
 // creates a new constructor Engineer class
 function addEngineer() {
-    inquirer.prompt([...engineerQuestions])
+    inquirer.prompt(engineerQuestions)
     .then ((engineerQuestions) => {
         teamEngineer.push(new Engineer(engineerQuestions.name, engineerQuestions.id, engineerQuestions.email, engineerQuestions.gitHub))
         newMem();
@@ -185,7 +185,7 @@ function addEngineer() {
 
 // creates a new constructor Intern class
 function addIntern() {
-    inquirer.prompt([...internQuestions])
+    inquirer.prompt(internQuestions)
     .then ((internQuestions) => {
         teamIntern.push(new Intern(internQuestions.name, internQuestions.id, internQuestions.email, internQuestions.school))
         newMem();
