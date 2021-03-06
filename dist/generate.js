@@ -6,7 +6,7 @@ const Intern = require('../lib/Intern');
 // function to loop through engineers and create cards for each
 function loopEngineer(teamEngineer) {
 
-    let newCards = teamEngineer.map(engineer => {
+    let engineerCards = teamEngineer.map(engineer => {
         return              `
                     <section class="col">
                         <div class="card shadow rounded">
@@ -27,44 +27,39 @@ function loopEngineer(teamEngineer) {
                             </div>
 
                         </div>
-                    </section>`
-        
+                    </section>`   
     })
 
-    return newCards.join('');
+    return engineerCards.join('');
 
 };
 
 // function to loop through interns and create cards for each
 function loopIntern(teamIntern) {
 
-    //empty array to hold generated intern cards
-    let internCards = []
-
-    for (i = 0; i < teamIntern.length; i++){
-        let internSect = ` 
+    let internCards = teamIntern.map(intern =>{
+        return              ` 
                     <section class="col">
                         <div class="card shadow rounded">
 
                             <div class="card-header">
-                                ${teamIntern[i].getName()} <br>
-                                ${teamIntern[i].getRole()}
+                                ${intern.getName()} <br>
+                                ${intern.getRole()}
                             </div>
 
                             <div class="card-body">
 
                                 <ul class="list-group list-group-flush border">
-                                    <li class="list-group-item">ID: ${teamIntern[i].getId()}</li>
-                                    <li class="list-group-item">Email: <a href="mailto:${teamIntern[i].getEmail()}">${teamIntern[i].getEmail()}</a></li>
-                                    <li class="list-group-item">${teamIntern[i].getSchool()}</li>
+                                    <li class="list-group-item">ID: ${intern.getId()}</li>
+                                    <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+                                    <li class="list-group-item">${intern.getSchool()}</li>
                                 </ul>
 
                             </div>
 
                         </div>
                     </section>`
-        internCards.push(internSect);
-    }
+    })
     return internCards.join('');
 };
 
