@@ -36,6 +36,8 @@ npm i inquirer and npm i jest
 
 In order to run the application you will need to run the command node index.js. You will be presented with a series of questions about your employees. Once all the questions have been answered the application will generate an HTML page displaying the information you entered about your employees. The file called myTeam.html was generated using this application. Below is a link to the walkthrough video.
 
+[Walkthrough](https://drive.google.com/file/d/1Nc9xkXELRwurrehpbp7kOWEMZLnkqHfq/view)
+
 ## License 
 
 This project is licensed under the [MIT](https://spdx.org/licenses/MIT.html) license.
